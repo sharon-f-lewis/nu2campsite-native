@@ -7,7 +7,7 @@ const DirectoryScreen = ({ navigation }) => {
   const [campsites, setCampsites] = useState(CAMPSITES);
 
   const renderDirectoryItem = ({ item: campsite }) => {
-    return(
+    return (
       <ListItem 
         onPress={() => 
           navigation.navigate('CampsiteInfo', { campsite })

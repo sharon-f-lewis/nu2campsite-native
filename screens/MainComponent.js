@@ -1,6 +1,8 @@
 import { Platform, View } from 'react-native';
 import Constants from 'expo-constants';
+import AboutScreen from './AboutScreen';
 import CampsiteInfoScreen from './CampsiteInfoScreen';
+import ContactScreen from './ContactScreen';
 import DirectoryScreen from './DirectoryScreen';
 import HomeScreen from './HomeScreen';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -11,6 +13,34 @@ const Drawer = createDrawerNavigator();
 const screenOptions = {
   headerTintColor: '#fff',
   headerStyle: { backgroundColor: '#5637DD' }
+};
+
+const AboutNavigator = () => {
+  const Stack = createStackNavigator();
+
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen 
+        name='About'
+        component={AboutScreen}
+        options={{ title: 'About' }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const ContactNavigator = () => {
+  const Stack = createStackNavigator();
+
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen 
+        name='Contact'
+        component={ContactScreen}
+        options={{ title: 'Contact Us' }}
+      />
+    </Stack.Navigator>
+  );
 };
 
 const HomeNavigator = () => {
@@ -71,7 +101,17 @@ const Main = () => {
         <Drawer.Screen 
           name='Directory'
           component={DirectoryNavigator}
-          options={{ Title: 'Directory' }}
+          options={{ title: 'Directory' }}
+        />
+        <Drawer.Screen 
+          name='About'
+          component={AboutNavigator}
+          options={{ title: 'About' }}
+        />
+        <Drawer.Screen
+          name='Contact'
+          component={ContactNavigator}
+          options={{ title: 'Contact Us' }}
         />
       </Drawer.Navigator>
     </View>
