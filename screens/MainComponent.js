@@ -5,6 +5,7 @@ import CampsiteInfoScreen from './CampsiteInfoScreen';
 import ContactScreen from './ContactScreen';
 import DirectoryScreen from './DirectoryScreen';
 import HomeScreen from './HomeScreen';
+import ReservationScreen from './ReservationScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import { 
   createDrawerNavigator,
@@ -129,6 +130,30 @@ const HomeNavigator = () => {
   );
 };
 
+const ReservationNavigator = () => {
+  const Stack = createStackNavigator();
+
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name='Reservation'
+        component={ReservationScreen}
+        options={({ navigation }) => ({
+          title: 'Reservation',
+          headerLeft: () => (
+            <Icon
+              name='tree'
+              type='font-awesome'
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          )
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const CustomDrawerContent = (props) => (
   <DrawerContentScrollView {...props}>
     <View style={styles.drawerHeader}>
@@ -189,6 +214,22 @@ const Main = () => {
             drawerIcon: ({ color }) => (
               <Icon
                 name='list'
+                type='font-awesome'
+                size={24}
+                iconStyle={{ width: 24 }}
+                color={color}
+              />
+            )
+          }}
+        />
+        <Drawer.Screen
+          name='ReserveCampsite'
+          component={ReservationNavigator}
+          options={{
+            title: 'Reserve Campsite',
+            drawerIcon: ({ color }) => (
+              <Icon
+                name='tree'
                 type='font-awesome'
                 size={24}
                 iconStyle={{ width: 24 }}
