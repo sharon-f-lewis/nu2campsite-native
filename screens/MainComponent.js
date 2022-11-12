@@ -43,7 +43,7 @@ const AboutNavigator = () => {
               iconStyle={styles.stackIcon}
               onPress={() => navigation.toggleDrawer()}
             />
-          ),
+          )
         })}
       />
     </Stack.Navigator>
@@ -67,31 +67,7 @@ const ContactNavigator = () => {
               iconStyle={styles.stackIcon}
               onPress={() => navigation.toggleDrawer()}
             />
-          ),
-        })}
-      />
-    </Stack.Navigator>
-  );
-};
-
-const HomeNavigator = () => {
-  const Stack = createStackNavigator();
-
-  return (
-    <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen
-        name='Home'
-        component={HomeScreen}
-        options={({ navigation }) => ({
-          title: 'Home',
-          headerLeft: () => (
-            <Icon
-              name='home'
-              type='font-awesome'
-              iconStyle={styles.stackIcon}
-              onPress={() => navigation.toggleDrawer()}
-            />
-          ),
+          )
         })}
       />
     </Stack.Navigator>
@@ -115,7 +91,7 @@ const DirectoryNavigator = () => {
               iconStyle={styles.stackIcon}
               onPress={() => navigation.toggleDrawer()}
             />
-          ),
+          )
         })}
       />
       <Stack.Screen
@@ -129,8 +105,32 @@ const DirectoryNavigator = () => {
   );
 };
 
+const HomeNavigator = () => {
+  const Stack = createStackNavigator();
+
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name='Home'
+        component={HomeScreen}
+        options={({ navigation }) => ({
+          title: 'Home',
+          headerLeft: () => (
+            <Icon
+              name='home'
+              type='font-awesome'
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          )
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const CustomDrawerContent = (props) => (
-  <DrawerContentScrollView>
+  <DrawerContentScrollView {...props}>
     <View style={styles.drawerHeader}>
       <View style={{ flex: 1 }}>
         <Image source={logo} style={styles.drawerImage} />
@@ -141,7 +141,7 @@ const CustomDrawerContent = (props) => (
     </View>
     <DrawerItemList {...props} labelStyle={{ fontWeight: 'bold' }} />
   </DrawerContentScrollView>
-)
+);
 
 const Main = () => {
   const dispatch = useDispatch();

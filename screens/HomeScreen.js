@@ -5,10 +5,10 @@ import { baseUrl } from '../shared/baseUrl';
 import Loading from '../components/LoadingComponent';
 
 const FeaturedItem = (props) => {
-  const { item } = {props};
+  const { item } = props;
 
   if (props.isLoading) {
-    return <Loading />
+    return <Loading />;
   }
 
   if (props.errMess) {
@@ -16,7 +16,7 @@ const FeaturedItem = (props) => {
       <View>
         <Text>{props.errMess}</Text>
       </View>
-    )
+    );
   }
 
   if (item) {
@@ -43,7 +43,9 @@ const HomeScreen = () => {
 
   const featCampsite = campsites.campsitesArray.find((item) => item.featured);
   const featPartner = partners.partnersArray.find((item) => item.featured);
-  const featPromotion = promotions.promotionsArray.find((item) => item.featured);
+  const featPromotion = promotions.promotionsArray.find(
+    (item) => item.featured
+  );
 
   return (
     <ScrollView>
